@@ -1,7 +1,14 @@
-.blockOfText{
+body{
+    background-color: red;
+}
 
-    dispaly: flex;
+h1{
+    color: white;
+}
+
+.blockOfText{
     background-color: white;
     border: 30em;
-    margin: auto;
+    border-radius: 2%;
+    padding: 1em;
 }
