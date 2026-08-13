@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Minha Página</title>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="musica" autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const musica = document.getElementById("musica");
+
+        // Volume máximo
+        musica.volume = 1.0;
+
+        // Tenta autoplay imediatamente
+        musica.play().catch(() => {
+            console.log("Autoplay bloqueado pelo navegador.");
+        });
+
+        // Se o navegador bloquear, qualquer clique/toque inicia a música
+        function iniciarMusica() {
+            musica.play().then(() => {
+                document.removeEventListener("click", iniciarMusica);
+                document.removeEventListener("touchstart", iniciarMusica);
+            });
+        }
+
+        document.addEventListener("click", iniciarMusica);
+        document.addEventListener("touchstart", iniciarMusica);
+    </script>
+
+</body>
+
+</html>
